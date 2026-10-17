@@ -1,3 +1,4 @@
+import Script from 'next/script';
 import type { Metadata } from "next";
 import "./globals.css";
 
@@ -58,20 +59,20 @@ export default function RootLayout({
           rel="stylesheet"
         />
       </head>
-      <body className="antialiased">
-        {children}
-
-        <script type="module">
-          import Typebot from 'https://cdn.jsdelivr.net/npm/@typebot.io/js@0/dist/web.js'
-          Typebot.initBubble({
-            typebot: "my-typebot-uw4rrsu",
-            theme: {
-              button: { backgroundColor: "#1D1D1D" },
-              chatWindow: { backgroundColor: "#F8F8F8" },
-            },
-          });
-        </script>
-      </body>
+  <body className="antialiased">
+    {children}
+    
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@typebot.io/js@0/dist/web.js"></script>
+    <script type="module">
+      Typebot.initBubble({
+        typebot: "my-typebot-uw4rrsu",
+        theme: {
+          button: { backgroundColor: "#1D1D1D" },
+          chatWindow: { backgroundColor: "#F8F8F8" },
+        },
+      });
+    </script>
+  </body>
     </html>
   );
 }
