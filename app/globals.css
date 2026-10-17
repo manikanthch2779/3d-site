@@ -1,0 +1,329 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─── AUREON Royal Design System ─── */
+:root {
+  --background: #090B10;
+  --surface: #0E131F;
+  --royal-obsidian: #06080E;
+  --royal-midnight: #0B101D;
+  --stone: #C8B89E;
+  --champagne: #E5C483;
+  --gold-imperial: #D4AF37;
+  --gold-light: #F3E5AB;
+  --gold-dark: #A38025;
+  --bronze: #9E7D46;
+  --ink: #F7F5F0;
+  --muted-ink: #A0988A;
+  --cloud: #FFFFFF;
+  --mist: #1A2234;
+
+  /* Spacing Grid — 8px base */
+  --space-1: 0.5rem;
+  --space-2: 1rem;
+  --space-3: 1.5rem;
+  --space-4: 2rem;
+  --space-5: 2.5rem;
+  --space-6: 3rem;
+  --space-8: 4rem;
+  --space-10: 5rem;
+  --space-12: 6rem;
+  --space-16: 8rem;
+  --space-20: 10rem;
+  --space-24: 12rem;
+
+  /* Typography */
+  --font-sans: "Inter", system-ui, -apple-system, sans-serif;
+  --font-display: "Cinzel", Georgia, serif;
+  --font-royal-dec: "Cinzel Decorative", Georgia, serif;
+  --font-editorial: "Cormorant Garamond", Georgia, serif;
+
+  /* Transitions */
+  --ease-aureon: cubic-bezier(0.25, 0.1, 0.25, 1);
+  --ease-out-aureon: cubic-bezier(0.16, 1, 0.3, 1);
+  --duration-fast: 0.3s;
+  --duration-medium: 0.6s;
+  --duration-slow: 1.2s;
+
+  /* Navigation */
+  --nav-height: 56px;
+  --nav-blur: 20px;
+
+  /* Z-index layers */
+  --z-base: 1;
+  --z-content: 10;
+  --z-overlay: 50;
+  --z-nav: 100;
+  --z-modal: 200;
+}
+
+/* ─── Reset & Base ─── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+html, body {
+  cursor: auto !important;
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--background);
+  color: var(--ink);
+  overflow-x: hidden;
+  max-width: 100vw;
+  line-height: 1.6;
+}
+
+/* ─── Typography ─── */
+.font-display {
+  font-family: var(--font-display);
+}
+
+.font-editorial {
+  font-family: var(--font-editorial);
+}
+
+.text-hero {
+  font-size: clamp(4rem, 10vw, 11rem);
+  line-height: 0.85;
+  letter-spacing: -0.07em;
+  font-weight: 700;
+  font-family: var(--font-display);
+}
+
+.text-manifesto {
+  font-size: clamp(2rem, 5vw, 4.5rem);
+  line-height: 0.92;
+  letter-spacing: -0.05em;
+  font-weight: 600;
+  font-family: var(--font-display);
+}
+
+.text-section-label {
+  font-size: 0.6875rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  font-weight: 500;
+  color: var(--muted-ink);
+}
+
+/* ─── Selection ─── */
+::selection {
+  background-color: var(--champagne);
+  color: var(--cloud);
+}
+
+/* ─── Scrollbar ─── */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--stone);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--champagne);
+}
+
+/* ─── Focus States ─── */
+:focus-visible {
+  outline: 2px solid var(--champagne);
+  outline-offset: 4px;
+  border-radius: 2px;
+}
+
+/* ─── Video ─── */
+video {
+  object-fit: cover;
+}
+
+/* ─── Typography Utility Classes ─── */
+.font-cinzel {
+  font-family: var(--font-display);
+}
+
+.font-cinzel-dec {
+  font-family: var(--font-royal-dec);
+}
+
+.text-gold-gradient {
+  background: linear-gradient(135deg, #FFF5D0 0%, #D4AF37 45%, #E5C483 70%, #AA7C11 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-gold-shine {
+  background: linear-gradient(90deg, #D4AF37 0%, #FFF8E7 50%, #D4AF37 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: goldShine 4s linear infinite;
+}
+
+@keyframes goldShine {
+  0% { background-position: 0% center; }
+  100% { background-position: 200% center; }
+}
+
+/* ─── Royal Glass & Luxury Cards ─── */
+.glass-warm,
+.glass-royal {
+  background: rgba(14, 19, 31, 0.75);
+  backdrop-filter: blur(var(--nav-blur));
+  -webkit-backdrop-filter: blur(var(--nav-blur));
+  border: 1px solid rgba(212, 175, 55, 0.22);
+  box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.5), inset 0 1px 0 0 rgba(255, 245, 208, 0.15);
+}
+
+.glass-royal-card {
+  background: linear-gradient(145deg, rgba(20, 26, 42, 0.85) 0%, rgba(9, 11, 16, 0.95) 100%);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(212, 175, 55, 0.25);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.6);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-royal-card:hover {
+  border-color: rgba(212, 175, 55, 0.6);
+  box-shadow: 0 20px 50px rgba(212, 175, 55, 0.15), 0 0 20px rgba(212, 175, 55, 0.1);
+  transform: translateY(-4px);
+}
+
+.gradient-warm-overlay,
+.gradient-hero-overlay {
+  background: linear-gradient(
+    180deg,
+    rgba(6, 8, 14, 0.6) 0%,
+    rgba(6, 8, 14, 0.2) 40%,
+    rgba(6, 8, 14, 0.85) 100%
+  );
+}
+
+.gradient-radial-warm {
+  background: radial-gradient(
+    ellipse at 50% 0%,
+    rgba(212, 175, 55, 0.18) 0%,
+    transparent 70%
+  );
+}
+
+/* ─── Royal Atmosphere & Shimmer ─── */
+.atmosphere-particle {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: var(--gold-imperial);
+  border-radius: 50%;
+  opacity: 0;
+  pointer-events: none;
+  box-shadow: 0 0 6px var(--gold-imperial);
+}
+
+.royal-shimmer-btn {
+  position: relative;
+  overflow: hidden;
+}
+
+.royal-shimmer-btn::after {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    60deg,
+    transparent 30%,
+    rgba(255, 245, 208, 0.35) 50%,
+    transparent 70%
+  );
+  transform: rotate(30deg) translateY(-100%);
+  transition: transform 0.8s ease-in-out;
+}
+
+.royal-shimmer-btn:hover::after {
+  transform: rotate(30deg) translateY(100%);
+}
+
+/* ─── Magnetic Button Base ─── */
+.magnetic-area {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+/* ─── Reduced Motion ─── */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ─── Responsive helpers ─── */
+@layer utilities {
+  .will-change-transform {
+    will-change: transform;
+  }
+
+  .will-change-opacity {
+    will-change: opacity;
+  }
+
+  .backface-hidden {
+    backface-visibility: hidden;
+  }
+
+  .gpu-accelerated {
+    transform: translateZ(0);
+  }
+}
