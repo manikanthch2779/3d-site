@@ -11,6 +11,8 @@
   "dependencies": {
     "@types/three": "^0.160.0",
     "clsx": "^2.1.0",
+    "gsap": "^3.12.5",
+    "lenis": "^1.1.0",
     "lucide-react": "^1.16.0",
     "next": "latest",
     "react": "latest",
