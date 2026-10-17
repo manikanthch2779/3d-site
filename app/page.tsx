@@ -3,9 +3,9 @@
 import { useEffect, useRef } from "react";
 import { gsap, ScrollTrigger } from "@/lib/gsap";
 import { initLenis, destroyLenis } from "@/lib/lenis";
-import CustomCursor from "@/components/CustomCursor";
-import Preloader from "@/components/Preloader";
-import FloatingNav from "@/components/FloatingNav";
+//import CustomCursor from "@/components/CustomCursor";
+//import Preloader from "@/components/Preloader";
+//import FloatingNav from "@/components/FloatingNav";
 import HeroSection from "@/components/HeroSection";
 import ManifestoSection from "@/components/ManifestoSection";
 import AnthologySection from "@/components/AnthologySection";
